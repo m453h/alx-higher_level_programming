@@ -4,7 +4,7 @@ for i in range(10):
 
         print("{}{}".format(i, j), end="")
 
-        if i != 8 or j !=9:
+        if i != 8 or j != 9:
             print("{} ".format(","), end="")
         else:
             print("{}".format("\n"), end="")
