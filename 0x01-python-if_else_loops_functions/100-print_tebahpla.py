@@ -2,6 +2,7 @@
 
 for i in range(90, 64, -1):
     if i % 2 == 0:
-        print(chr(i + 32), end="")
+        j = 32
     else:
-        print(chr(i), end="")
+        j = 0
+    print(chr(i + j), end='')
