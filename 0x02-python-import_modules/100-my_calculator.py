@@ -11,9 +11,10 @@ if __name__ == "__main__":
     a = int(sys.argv[1])
     b = int(sys.argv[3])
     op = sys.argv[2]
-    
+
     if op not in operators:
         print("Unknown operator. Available operators: +, -, * and /")
+        exit(1)
     else:
         if op == "+":
             result = add(a, b)
