@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+def best_score(a_dictionary):
+    max_int = None
+
+    if a_dictionary is None:
+        return max_int
+
+    for k in a_dictionary:
+        if max_int is None:
+            max_int = a_dictionary[k]
+
+        if a_dictionary[k] > max_int:
+            max_int = a_dictionary[k]
+
+    return max_int
