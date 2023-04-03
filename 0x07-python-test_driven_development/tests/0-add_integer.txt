@@ -1,0 +1,53 @@
+# 0-add_integer.txt
+
+# This doctest validates that implementation of the 0-add_integer.txt file
+>>> add_integer = __import__('0-add_integer').add_integer
+
+======================
+TESTING NUMERIC VALUES
+======================
+
+>>> add_integer(2, 3)
+5
+
+>>> add_integer(100, -2)
+98
+
+>>> add_integer(2)
+100
+
+>>> add_integer(100.3, -2)
+98
+
+================
+TESTING STRINGS
+================
+
+>>> add_integer('2', 3)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(2, '3')
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+
+>>> add_integer(2, '3')
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer('2', '3')
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+========================
+TESTING INFINITY AND NAN
+========================
+
+>>> add_integer(float('inf'), float('inf'))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float('nan'), float('nan'))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
