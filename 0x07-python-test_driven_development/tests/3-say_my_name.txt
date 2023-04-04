@@ -1,0 +1,35 @@
+# 3-say_my_name.txt
+
+# This doctest validates that implementation of the 3-say_my_name.txt
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+=======================
+TESTING PROPER NAMES
+=======================
+
+# Check if proper full name is displayed
+
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+# Check if proper full name is displayed
+>>> say_my_name("John Steven", "Jane Doe")
+My name is John Steven Jane Doe
+
+=======================
+TESTING INVALID INPUTS
+=======================
+
+# Testing for a non string first name
+>>> say_my_name(3, "Doe")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Testing for a non string last name
+>>> say_my_name("Jane", 234)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+# Testing for an empty string last name
+>>> say_my_name("Jane")
+My name is Jane 
