@@ -1,0 +1,94 @@
+# 100-matrix_mul.txt
+
+# This doctest validates that implementation of the 100-matrix_mul.txt
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+=======================
+TESTING PROPER INPUTS
+=======================
+# Check if the matrices of same size are correctly multiplied
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, 6], [7, 8]]
+>>> matrix_mul(m_a, m_b)
+[[19, 22], [43, 50]]
+
+# Check if the matrices of different size are correctly multiplied
+>>> m_a = [[1, 2]]
+>>> m_b = [[3, 4], [5, 6]]
+>>> matrix_mul(m_a, m_b)
+[[13, 16]]
+
+# Check if the matrices with floats can be correctly mutliplied
+>>> m_a = [[0.1, 0.2], [0.7, 0.8]]
+>>> m_b = [[0.3, 0.4], [0.5, 0.6]]
+>>> matrix_mul(m_a, m_b)
+[[0.13, 0.16], [0.61, 0.76]]
+
+=======================
+TESTING INVALID INPUTS
+=======================
+
+# Testing if m_a is not a list
+>>> matrix_mul(100, [[1, 2]])
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+# Testing if m_b is not a list
+>>> matrix_mul([[1, 2]], 100)
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+# Testing if m_a is empty
+>>> matrix_mul([[]], [[1, 2]])
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+# Testing if m_b is empty
+>>> matrix_mul([[1, 2]], [[]])
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+# Testing if m_a is not a list of lists
+>>> matrix_mul([1, 2, 3], [[1, 2]])
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+# Testing if m_b is not a list of lists
+>>> matrix_mul([[1, 2]], [1, 2, 3])
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+# Check if m_a has non-numeric element
+>>> m_a = [[1, '2']]
+>>> m_b = [[3, 4], [5, 6]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+# Check if m_b has non-numeric element
+>>> m_a = [[1, 2]]
+>>> m_b = [[3, 4], [5, '6']]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+# Check if m_a has rows without same size
+>>> m_a = [[1, 2, 3], [4, 5], [1, 5, 8]]
+>>> m_b = [[3, 4], [5, 6]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_a must should be of the same size
+
+# Check if m_b has rows without same size
+>>> m_a = [[3, 4], [5, 6]]
+>>> m_b = [[1, 2, 3], [4, 5], [1, 5, 8]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_b must should be of the same size
+
+# Check if m_a and m_b can't be multiplied
+>>> m_a = [[3, 4], [5, 6]]
+>>> m_b = [[1, 2, 3], [4, 5, 0], [1, 5, 8]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
