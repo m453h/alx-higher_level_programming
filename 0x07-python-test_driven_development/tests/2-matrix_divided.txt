@@ -1,0 +1,60 @@
+# 2-matrix_divided.txt
+
+# This doctest validates that implementation of the 2-matrix_divided.py
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+=======================
+TESTING NUMERIC VALUES
+=======================
+
+>>> matrix = [[12, 15, 18], [3, 6, 9]]
+
+# Check if the matrix is correctly divided
+
+>>> matrix_divided(matrix, 3)
+[[4.0, 5.0, 6.0], [1.0, 2.0, 3.0]]
+
+# Verify that the original matrix is not modified
+>>> print(matrix)
+[[12, 15, 18], [3, 6, 9]]
+
+# Verify that the division is rounded to two decimal places
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 6)
+[[0.17, 0.33, 0.5], [0.67, 0.83, 1.0]]
+
+# Verify that the function can also divide arrays of floating point numbers
+>>> matrix_divided([[0.12, 0.15, 0.18], [0.3, 0.6, 0.9]], 3)
+[[0.04, 0.05, 0.06], [0.1, 0.2, 0.3]]
+
+=======================
+TESTING INVALID INPUTS
+=======================
+
+# Testing for a non-matrix list
+>>> matrix_divided([1, 2, 3], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Testing for a list of list without rows of same size
+>>> matrix_divided([[1, 2, 3], [4, 5], [1, 5, 8]], 2)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+# Testing for a list of list with incorrect data type
+>>> matrix_divided([[1, 'a', 'b'], [4, 5], [1, 5, 8]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Testing for zero divisor
+>>> matrix_divided([[12, 15, 18], [3, 6, 9]], 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+# Testing for non numeric divisor
+>>> matrix_divided([[8, 15, 18], [3, 6, 9]], 'a')
+Traceback (most recent call last):
+TypeError: div must be a number
+
+# Testing for non numeric divisor
+>>> matrix_divided([[float('inf'), float('inf'), float('inf')], [float('inf'), float('inf'), float('inf')]], 2)
+[[inf, inf, inf], [inf, inf, inf]]

@@ -1,6 +1,6 @@
 # 0-add_integer.txt
 
-# This doctest validates that implementation of the 0-add_integer.txt file
+# This doctest validates that implementation of the 0-add_integer.py file
 >>> add_integer = __import__('0-add_integer').add_integer
 
 ======================
