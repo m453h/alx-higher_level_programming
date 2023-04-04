@@ -1,0 +1,55 @@
+# 5-text_indentation.txt
+
+# This doctest validates that implementation of the 5-text_indentation.txt
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+=======================
+TESTING PROPER INPUTS
+=======================
+
+# Check if proper new line is introduced after '.''
+>>> text_indentation("Hello World.")
+Hello World.
+<BLANKLINE>
+
+# Check if proper new line is introduced after '?'
+>>> text_indentation("Hello World?")
+Hello World?
+<BLANKLINE>
+
+# Check if proper new line is introduced after ':'
+>>> text_indentation("Hello World:")
+Hello World:
+<BLANKLINE>
+
+# Check if there are no leading spaces on output
+>>> text_indentation("   Hello world.")
+Hello world.
+<BLANKLINE>
+
+# Check if there are no trailing spaces on output
+>>> text_indentation("Hello world.  ")
+Hello world.
+<BLANKLINE>
+
+# Check if there are no both trailing and leading spaces on output
+>>> text_indentation("     Hello. world.  ")
+Hello.
+<BLANKLINE>
+world.
+<BLANKLINE>
+
+# Check for a forced new line by \n character
+>>> text_indentation("     Hello\n world.  ")
+Hello
+world.
+<BLANKLINE>
+
+=======================
+TESTING INVALID INPUTS
+=======================
+
+# Check if non string data is passed as argument
+>>> text_indentation(7)
+Traceback (most recent call last):
+TypeError: text must be a string
