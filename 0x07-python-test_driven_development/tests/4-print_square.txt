@@ -1,0 +1,61 @@
+# 4-print_square.txt
+
+# This doctest validates that implementation of the 4-print_square.txt
+>>> print_square = __import__('4-print_square').print_square
+
+=======================
+TESTING PROPER INPUTS
+=======================
+
+# Check if proper square is displayed
+>>> print_square(4)
+####
+####
+####
+####
+
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> print_square(1)
+#
+
+>>> print_square(0)
+
+=======================
+TESTING INVALID INPUTS
+=======================
+
+# Testing for a float
+>>> print_square(5.0)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+# Testing for a string
+>>> print_square("5")
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+# Testing for a negative integer
+>>> print_square(-10)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+# Testing for a negative float
+>>> print_square(-0.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+# Testing for no argument passed 
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
