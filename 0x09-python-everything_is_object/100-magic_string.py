@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 def magic_string():
-    return "BestSchool" if i == 0 else "BestSchool, " * (i) + "BestSchool"
+    n = magic_string.n = getattr(magic_string, 'n', 0) + 1
+    return "BestSchool" if n == 0 else "BestSchool, " * (n - 1) + "BestSchool"
