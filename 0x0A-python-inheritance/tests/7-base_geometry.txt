@@ -64,6 +64,10 @@ TypeError: (1, 2) must be an integer
 Traceback (most recent call last):
 TypeError: inf must be an integer
 
+>>> bg.integer_validator("Name", "John")
+Traceback (most recent call last):
+TypeError: Name must be an integer
+
 ======================
 TESTING CLASS METHODS
 ======================
