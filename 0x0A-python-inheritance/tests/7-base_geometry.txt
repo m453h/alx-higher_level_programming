@@ -31,9 +31,40 @@ ValueError: radius must be greater than 0
 Traceback (most recent call last):
 TypeError: radius must be an integer
 
+>>> bg.integer_validator("Truth", True)
+Traceback (most recent call last):
+TypeError: Truth must be an integer
+
+>>> bg.integer_validator("False", False)
+Traceback (most recent call last):
+TypeError: False must be an integer
+
+>>> bg.integer_validator("tuple", (100,))
+Traceback (most recent call last):
+TypeError: tuple must be an integer
+
+
+>>> bg.integer_validator("list", [100])
+Traceback (most recent call last):
+TypeError: list must be an integer
+
+>>> bg.integer_validator("set", {3, 4})
+Traceback (most recent call last):
+TypeError: set must be an integer
+
 ======================
 TESTING CLASS METHODS
 ======================
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
+
+>>> bg.integer_validator() # doctest: +NORMALIZE_WHITESPACE
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 
+'name' and 'value'
+
+>>> bg.integer_validator(None) # doctest: +NORMALIZE_WHITESPACE
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 
+'value'
