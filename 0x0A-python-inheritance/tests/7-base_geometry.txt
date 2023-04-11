@@ -1,0 +1,32 @@
+# 7-base_geometry.txt
+
+# This doctest validates that implementation of the 7-base_geometry.py file
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+======================
+TESTING PROPER VALUES
+======================
+
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+
+
+========================
+TESTING INCORRECT VALUES
+========================
+>>> bg.integer_validator("radius", 3.24)
+Traceback (most recent call last):
+TypeError: radius must be an integer
+
+>>> bg.integer_validator("radius", 0)
+Traceback (most recent call last):
+ValueError: radius must be greater than 0
+
+>>> bg.integer_validator("radius", -10)
+Traceback (most recent call last):
+ValueError: radius must be greater than 0
+
+>>> bg.integer_validator("radius", None)
+Traceback (most recent call last):
+TypeError: radius must be an integer
