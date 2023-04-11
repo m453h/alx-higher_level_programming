@@ -72,6 +72,6 @@ TypeError: integer_validator() missing 1 required positional argument:
 >>> type(bg)
 <class '7-base_geometry.BaseGeometry'>
 
->>> print(bg.integer_validator) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
-<bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry 
-object at...>>
+>>> bg = BaseGeometry(None)
+Traceback (most recent call last):
+TypeError: BaseGeometry() takes no arguments
