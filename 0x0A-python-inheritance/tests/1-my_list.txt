@@ -30,3 +30,17 @@ TESTING EMPTY LIST
 []
 >>> print(my_list)
 []
+
+================================
+TESTING LIST WITH NON INT VALUES
+================================
+>>> my_list = MyList()
+>>> my_list.append("a")
+>>> my_list.append("e")
+>>> my_list.append("d")
+>>> my_list.append("b")
+>>> my_list.append("c")
+>>> my_list.print_sorted()
+['a', 'b', 'c', 'd', 'e']
+>>> print(my_list)
+['a', 'e', 'd', 'b', 'c']
