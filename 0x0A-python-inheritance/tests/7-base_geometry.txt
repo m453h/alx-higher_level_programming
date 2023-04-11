@@ -87,7 +87,11 @@ TypeError: integer_validator() missing 1 required positional argument:
 >>> print(bg) # doctest: +ELLIPSIS
 <7-base_geometry.BaseGeometry object at ...>
 
->> print(BaseGeometry)
+>>> print(BaseGeometry)
+<class '7-base_geometry.BaseGeometry'>
+
+>>> isinstance(bg, BaseGeometry)
+True
 
 >>> bg = BaseGeometry(None)
 Traceback (most recent call last):
