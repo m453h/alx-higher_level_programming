@@ -9,7 +9,7 @@ class BaseGeometry:
         """
             Defines generic implemented.
 
-            :raises:
+            Raises:
                     Exception: area() is not implemented.
 
         """
