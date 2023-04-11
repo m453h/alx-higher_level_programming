@@ -60,7 +60,7 @@ TypeError: ['a', 'l', 'x'] must be an integer
 Traceback (most recent call last):
 TypeError: (1, 2) must be an integer
 
->>> bg.integer_validator("inf", float(inf))
+>>> bg.integer_validator("inf", float('inf'))
 Traceback (most recent call last):
 TypeError: inf must be an integer
 
