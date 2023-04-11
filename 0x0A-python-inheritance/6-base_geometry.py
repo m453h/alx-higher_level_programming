@@ -7,7 +7,7 @@ class BaseGeometry:
 
     def area(self):
         """
-            Defines generic implemented.
+            Defines generic non-implemented area method.
 
             Raises:
                     Exception: area() is not implemented.
