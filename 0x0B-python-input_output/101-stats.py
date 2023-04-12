@@ -52,29 +52,23 @@ def parse_line(line):
         return None
 
 
-def sum_response_code():
-    return True
-
-
 def read_from_stdin():
     line_count = 0
     total_size = 0
     stats = {}
     try:
         for line in sys.stdin:
+            line_count += 1
             parsed_data = parse_line(line)
-
+            print("{} - {}".format(line_count, line))
             if parsed_data is not None:
                 total_size += parsed_data["line_size"]
                 if stats.get(parsed_data["status_code"]) is None:
                     stats[parsed_data["status_code"]] = 1
                 else:
                     stats[parsed_data["status_code"]] += 1
-            if line_count == 10:
+            if line_count % 10 == 0:
                 display_stats(total_size, stats)
-                line_count = 1
-            else:
-                line_count += 1
     except KeyboardInterrupt:
         display_stats(total_size, stats)
 
