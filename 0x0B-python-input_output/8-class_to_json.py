@@ -18,4 +18,20 @@ def class_to_json(obj):
 
         Return: (dict) A dictionary containing details of the object
     """
-    return obj.__dict__
+    if not obj:
+        return None
+
+    obj_dictionary = {}
+    attributes = dir(obj)
+
+    for attribute in attributes:
+
+        if callable(getattr(obj, attribute)) or attribute.startswith("__"):
+            continue
+            
+        attribute_value = getattr(obj, attribute)
+       
+        if isinstance(attribute_value, (list, dict, str, int, bool)):
+            obj_dictionary[attribute] = attribute_value
+
+    return obj_dictionary
