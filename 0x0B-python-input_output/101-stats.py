@@ -67,10 +67,11 @@ def read_from_stdin():
 
             if parsed_data is not None:
                 total_size += parsed_data["line_size"]
-                if stats.get(parsed_data["status_code"]) is None:
-                    stats[parsed_data["status_code"]] = 1
-                else:
-                    stats[parsed_data["status_code"]] += 1
+                if parsed_data["is_valid_code"]:
+                    if stats.get(parsed_data["status_code"]) is None:
+                        stats[parsed_data["status_code"]] = 1
+                    else:
+                        stats[parsed_data["status_code"]] += 1
             if line_count % 10 == 0:
                 display_stats(total_size, stats)
         display_stats(total_size, stats)
