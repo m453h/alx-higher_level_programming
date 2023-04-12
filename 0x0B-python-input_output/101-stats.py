@@ -24,30 +24,29 @@ import sys
 
 def display_stats(total_size, stats):
     """
-       Displays summary of the stats read from stdin.
-       Args:
-           total_size (int): The total file size read.
-           stats (dict): The dictionary with summary of status codes totals
+    Displays summary of the stats read from stdin.
+    Args:
+        total_size (int): The total file size read.
+        stats (dict): The dictionary with summary of status codes totals
     """
-    print("File size: {}".format(total_size))
-    for key in sorted(stats):
-        print("{}: {}".format(key, stats[key]))
+    print("Total file size: {}".format(total_size))
+    sorted_stats = sorted(stats.items(), key=lambda x: int(x[0]))
+    for key, value in sorted_stats:
+        print("{}: {}".format(key, value))
 
 
 def parse_line(line):
-    status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-    x = line.split()
+    status_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
+    line_parts = line.split()
     try:
-        if x[-2] in status_codes:
-            is_valid_code = True
-        else:
-            is_valid_code = False
-
+        line_size = int(line_parts[-1])
+        status_code = line_parts[-2]
+        is_valid_code = status_code in status_codes
         return {
-         "line_size": int(x[-1]),
-         "status_code": x[-2],
-         "is_valid_code": is_valid_code
-         }
+            "line_size": line_size,
+            "status_code": status_code,
+            "is_valid_code": is_valid_code
+        }
     except (IndexError, ValueError):
         return None
 
@@ -60,13 +59,10 @@ def read_from_stdin():
         for line in sys.stdin:
             line_count += 1
             parsed_data = parse_line(line)
-            print("{} - {}".format(line_count, line))
             if parsed_data is not None:
                 total_size += parsed_data["line_size"]
-                if stats.get(parsed_data["status_code"]) is None:
-                    stats[parsed_data["status_code"]] = 1
-                else:
-                    stats[parsed_data["status_code"]] += 1
+                if parsed_data["is_valid_code"]:
+                    stats[parsed_data["status_code"]] = stats.get(parsed_data["status_code"], 0) + 1
             if line_count % 10 == 0:
                 display_stats(total_size, stats)
     except KeyboardInterrupt:
