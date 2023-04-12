@@ -73,6 +73,7 @@ def read_from_stdin():
                     stats[parsed_data["status_code"]] += 1
             if line_count % 10 == 0:
                 display_stats(total_size, stats)
+        display_stats(total_size, stats)
     except KeyboardInterrupt:
         display_stats(total_size, stats)
 
