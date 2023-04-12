@@ -19,28 +19,17 @@ def pascal_triangle(n):
     """
     triangle = []
 
-    def factorial(n):
-        """
-            Calculates factorial of a number.
-
-            Args:
-                n (int): Number to calculate factorial.
-
-            Returns:
-                (int): Factorial of the given number.
-        """
-        if n == 0 or n == 1:
-            return 1
-        else:
-            return n * factorial(n - 1)
-
     if n <= 0:
         return triangle
 
     for i in range(n):
         row = []
+        factorial = 1
         for j in range(i + 1):
-            row.append(int(factorial(i) / (factorial(j) * factorial(i - j))))
+            if j > 0:
+                factorial = int(factorial * (i - j + 1) / j)
+            row.append(factorial)
+
         triangle.append(row)
 
     return triangle
