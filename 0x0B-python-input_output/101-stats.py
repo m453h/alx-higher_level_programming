@@ -71,6 +71,7 @@ def read_from_stdin():
                 display_stats(total_size, stats)
     except KeyboardInterrupt:
         display_stats(total_size, stats)
+        raise
 
 
 if __name__ == "__main__":
