@@ -62,7 +62,6 @@ def read_from_stdin():
     stats = {}
     try:
         for line in sys.stdin:
-            line_count += 1
             parsed_data = parse_line(line)
 
             if parsed_data is not None:
@@ -71,8 +70,11 @@ def read_from_stdin():
                     stats[parsed_data["status_code"]] = 1
                 else:
                     stats[parsed_data["status_code"]] += 1
-            if line_count % 10 == 0:
+            if line_count == 10:
                 display_stats(total_size, stats)
+                line_count = 1
+            else:
+                line_count += 1
     except KeyboardInterrupt:
         display_stats(total_size, stats)
 
