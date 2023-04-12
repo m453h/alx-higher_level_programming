@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Defines a function that returns a list of Pascal’s triangle number."""
+"""
+ Defines a function that returns a list of lists
+ of integers representing the Pascal’s triangle of n:
+
+"""
 
 
 def pascal_triangle(n):
@@ -20,12 +24,25 @@ def pascal_triangle(n):
 
     for i in range(n):
         row = []
-        factorial = 1
         for j in range(i + 1):
-            if j > 0:
-                factorial = int(factorial * (i - j + 1) / j)
-            row.append(factorial)
+            row.append(int(factorial(i) / (factorial(j) * factorial(i - j))))
 
         triangle.append(row)
 
     return triangle
+
+
+def factorial(n):
+    """
+    Calculates factorial of a number.
+
+    Args:
+        n (int): Number to calculate factorial.
+
+    Returns:
+        (int): Factorial of the given number.
+    """
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
