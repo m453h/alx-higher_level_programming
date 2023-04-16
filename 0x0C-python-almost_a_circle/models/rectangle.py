@@ -125,9 +125,21 @@ class Rectangle(Base):
 
     def display(self):
         """Prints in stdout the Rectangle instance with the character #"""
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
+
         for i in range(self.height):
             for j in range(self.width):
                 print('#', end="")
             if i != self.height - 1:
                 print("")
         print("")
+
+    def __str__(self):
+        """Returns the representation of the Rectangle instance"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x,
+                                                       self.y,
+                                                       self.width,
+                                                       self.height)
