@@ -148,3 +148,30 @@ class Rectangle(Base):
                                                        self.y,
                                                        self.width,
                                                        self.height)
+    def update(self, *args):
+        """
+        Assigns arguments passed to the program to the Rectangle instance
+
+        Args:
+            *args:  Variable number of arguments, expected to contain integers
+                    where:
+                        1st argument is the id attribute
+                        2nd argument is the width attribute
+                        3rd argument is the height attribute
+                        4th argument is the x attribute
+                        5th argument is the y attribute
+        """
+        if args and len(args) != 0:
+            iteration = 0
+            for arg in args:
+                if iteration == 0:
+                    self.id = arg
+                elif iteration == 1:
+                    self.width = arg
+                elif iteration == 2:
+                    self.height = arg
+                elif iteration == 3:
+                    self.x = arg
+                elif iteration == 4:
+                    self.y = arg
+                iteration += 1
