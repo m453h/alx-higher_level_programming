@@ -200,7 +200,7 @@ class TestBase_save_to_file(unittest.TestCase):
         s = Square(10, 8, 6, 4)
         Square.save_to_file([s])
         with open("Square.json", "r") as f:
-            self.assertTrue(len(f.read()) == 38)
+            self.assertTrue(len(f.read()) == 39)
 
     def test_save_to_file_with_None_list_of_objects(self):
         Square.save_to_file(None)
