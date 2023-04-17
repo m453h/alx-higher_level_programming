@@ -19,7 +19,7 @@ class TestSquare__init__(unittest.TestCase):
             Square()
             Square()
             Square()
-    
+
     def test_init_with_none_arg(self):
         with self.assertRaises(TypeError):
             Square(None)
@@ -55,6 +55,7 @@ class TestSquare__init__(unittest.TestCase):
     def test_init_with_more_than_allowed_args(self):
         with self.assertRaises(TypeError):
             Square(1, 2, 3, 4, 5, 6)
+
 
 if __name__ == "__main__":
     unittest.main()
