@@ -68,7 +68,8 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Return the list of the JSON string representation json_string.
+        """
+        Return the list of the JSON string representation json_string.
 
         Args:
             json_string (str): String representing a list of dictionaries.
@@ -82,7 +83,8 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance of a class with all attributes set.
+        """
+        Returns an instance of a class with all attributes set.
 
         Args:
             **dictionary (dict): Dictionary with attributes to initialize.
@@ -99,3 +101,31 @@ class Base:
 
             dummy.update(**dictionary)
             return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns an instance of a class with all attributes set.
+
+        Args:
+            **dictionary (dict): Dictionary with attributes to initialize.
+
+        Returns:
+            (obj): The instance of a Rectangle or Square
+                   with attributes in **dictionary.
+        """
+        instances = []
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r") as input_file:
+                json_string = input_file.read()
+
+                if json_string:
+                    json_list = Base.from_json_string(json_string)
+                    for dictionary in json_list:
+                        instance = cls.create(**dictionary)
+                        instances.append(instance)
+        except FileNotFoundError:
+            pass
+
+        return instances
