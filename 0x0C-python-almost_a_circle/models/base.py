@@ -26,6 +26,7 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """
         Returns JSON string representation of list_dictionaries
@@ -64,3 +65,17 @@ class Base:
 
         with open(filename, 'w') as file:
             file.write(output)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Return the list of the JSON string representation json_string
+
+        Args:
+            json_string (str): String representing a list of dictionaries
+
+        Returns:
+            (list): The list represented by json_string
+        """
+        if json_string is None or json_string == "[]" or len(json_string) == 0:
+            return []
+        return json.loads(json_string)
