@@ -57,5 +57,23 @@ class TestSquare__init__(unittest.TestCase):
             Square(1, 2, 3, 4, 5, 6)
 
 
+class TestSquare_area(unittest.TestCase):
+    """Unittests for the Square class area method"""
+
+    def test_area_small_int(self):
+        self.assertEqual(9, Square(3, 0, 0, 1).area())
+
+    def test_area_large_int(self):
+        s = Square(489498498498498498498498498, 0, 0, 1)
+        r = 239608780032284536789041293057769517265012760508256004
+        self.assertEqual(r, s.area())
+
+    def test_area_float(self):
+        with self.assertRaises(TypeError):
+            s = Square(3.5, 0, 0, 1)
+            r = 12.25
+            self.assertEqual(r, s.area())
+
+
 if __name__ == "__main__":
     unittest.main()
