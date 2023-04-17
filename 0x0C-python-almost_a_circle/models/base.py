@@ -8,7 +8,7 @@ class Base:
     Represent a Base class instance.
 
     Attributes:
-        __nb_objects (int): The number of Base instances
+        __nb_objects (int): The number of Base instances.
 
     """
 
@@ -29,13 +29,13 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """
-        Returns JSON string representation of list_dictionaries
+        Returns JSON string representation of list_dictionaries.
 
         Args:
-            list_dictionaries (list): The list of dictionaries
+            list_dictionaries (list): The list of dictionaries.
 
         Return:
-            (string): JSON representation of list_dictionaries
+            (string): JSON representation of list_dictionaries.
         """
         if list_dictionaries is None:
             return "[]"
@@ -44,13 +44,13 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        Writes the JSON string representation of list_objs to a file
+        Writes the JSON string representation of list_objs to a file.
 
         Args:
-            list_objs (list): The list of instances who inherits from Base
+            list_objs (list): The list of instances who inherits from Base.
 
         Return:
-            (string): JSON representation of list_dictionaries
+            (string): JSON representation of list_dictionaries.
         """
         if list_objs is None:
             list_objs = []
@@ -68,14 +68,34 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Return the list of the JSON string representation json_string
+        """Return the list of the JSON string representation json_string.
 
         Args:
-            json_string (str): String representing a list of dictionaries
+            json_string (str): String representing a list of dictionaries.
 
         Returns:
-            (list): The list represented by json_string
+            (list): The list represented by json_string.
         """
         if json_string is None or json_string == "[]" or len(json_string) == 0:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance of a class with all attributes set.
+
+        Args:
+            **dictionary (dict): Dictionary with attributes to initialize.
+
+        Returns:
+            (obj): The instance of a Rectangle or Square
+                   with attributes in **dictionary.
+        """
+        if dictionary is not None and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                dummy = cls(1, 1)
+            else:
+                dummy = cls(1)
+
+            dummy.update(**dictionary)
+            return dummy
