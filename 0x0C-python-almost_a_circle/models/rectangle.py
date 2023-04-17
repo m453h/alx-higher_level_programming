@@ -129,7 +129,12 @@ class Rectangle(Base):
             print("")
             return
 
+        for y in range(self.y):
+            print("")
+
         for i in range(self.height):
+            for x in range(self.x):
+                print(" ", end="")
             for j in range(self.width):
                 print('#', end="")
             if i != self.height - 1:
