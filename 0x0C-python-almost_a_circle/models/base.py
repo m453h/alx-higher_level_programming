@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a Base class."""
 import json
+import csv
 
 
 class Base:
@@ -125,6 +126,67 @@ class Base:
                     for dictionary in json_list:
                         instance = cls.create(**dictionary)
                         instances.append(instance)
+        except FileNotFoundError:
+            pass
+
+        return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Writes the CSV string representation of list_objs to a file.
+
+        Args:
+            list_objs (list): The list of instances who inherits from Base.
+
+        Return:
+            (string): CSV representation of list_dictionaries.
+        """
+        if list_objs is None:
+            list_objs = []
+
+        filename = cls.__name__+".csv"
+        current_csv_list = []
+
+        for obj in list_objs:
+            current_csv_list.append(obj.to_dictionary())
+
+        with open(filename, 'w') as file:
+            if cls.__name__ == "Rectangle":
+                headers = ["id", "width", "height", "x", "y"]
+            else:
+                headers = ["id", "size", "x", "y"]
+            writer = csv.DictWriter(file, fieldnames=headers)
+            writer.writerows(current_csv_list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Returns an instance of a class with all attributes set.
+
+        Returns:
+            (obj): The instance of a Rectangle or Square
+                   with attributes in **dictionary.
+        """
+        instances = []
+        filename = str(cls.__name__) + ".csv"
+        try:
+            with open(filename, "r") as input_file:
+                if cls.__name__ == "Rectangle":
+                    headers = ["id", "width", "height", "x", "y"]
+                else:
+                    headers = ["id", "size", "x", "y"]
+
+                csv_dict = csv.DictReader(input_file, fieldnames=headers)
+
+                for dictionary in csv_dict:
+                    new_dict = {}
+
+                    for key, value in dictionary.items():
+                        new_dict[key] = int(value)
+
+                    instance = cls.create(**new_dict)
+                    instances.append(instance)
         except FileNotFoundError:
             pass
 
