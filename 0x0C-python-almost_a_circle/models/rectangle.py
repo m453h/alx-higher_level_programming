@@ -148,7 +148,8 @@ class Rectangle(Base):
                                                        self.y,
                                                        self.width,
                                                        self.height)
-    def update(self, *args):
+
+    def update(self, *args, **kwargs):
         """
         Assigns arguments passed to the program to the Rectangle instance
 
@@ -160,6 +161,8 @@ class Rectangle(Base):
                         3rd argument is the height attribute
                         4th argument is the x attribute
                         5th argument is the y attribute
+
+            **kwargs: Variable number of Key/value arguments
         """
         if args and len(args) != 0:
             iteration = 0
@@ -175,3 +178,15 @@ class Rectangle(Base):
                 elif iteration == 4:
                     self.y = arg
                 iteration += 1
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
