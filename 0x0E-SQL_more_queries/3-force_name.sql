@@ -1,5 +1,4 @@
---This script creates the table force_name on your MySQL server.
--- force_name description:
+-- This script creates the table force_name with:
 --  i) id INT
 --  ii) name VARCHAR(256) can’t be null
 -- If the table force_name already exists, your script should not fail
