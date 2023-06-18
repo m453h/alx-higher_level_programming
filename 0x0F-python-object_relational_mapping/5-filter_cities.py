@@ -13,11 +13,15 @@ if __name__ == "__main__":
         db=sys.argv[3]
         )
     cursor = db.cursor()
-    query = "SELECT `c`.`id`, `c`.`name`, `s`.`name` FROM `cities` as `c`\
+    query = "SELECT `c`.`name` FROM `cities` as `c`\
     INNER JOIN `states` as `s` ON `c`.`state_id` = `s`.`id`\
      WHERE `s`.`name` LIKE BINARY %s\
       ORDER BY `c`.`id` ASC"
     cursor.execute(query, (sys.argv[4],))
     cities = cursor.fetchall()
-    for city in cities:
-        print(city)
+    results = ""
+    for i in range(len(cities)):
+        results += cities[i][0]
+        if i < len(cities) - 1:
+            results += ", "
+    print(results)
