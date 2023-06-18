@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Creates the State “California” with the City 
+Creates the State “California” with the City
 'San Francisco' from the database hbtn_0e_100_usa
  """
 import sys
@@ -21,7 +21,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-
 
     state = State(name="California")
     city = City(name="San Fransisco")
