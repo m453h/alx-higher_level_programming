@@ -19,9 +19,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State)\
-        .filter(State.name == sys.argv[4])\
-        .order_by(State.id)
+    states = session.query(State).order_by(State.id)
 
     has_found = False
 
@@ -29,6 +27,7 @@ if __name__ == "__main__":
         if sys.argv[4] == state.name:
             print("{}".format(state.id))
             has_found = True
+            break
 
-    if has_found is not True:
+    if has_found is False:
         print("Nothing")
