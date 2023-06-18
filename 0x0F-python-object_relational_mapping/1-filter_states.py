@@ -13,7 +13,7 @@ if __name__ == "__main__":
         db=sys.argv[3]
         )
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM `states` where name\
+    cursor.execute("SELECT * FROM `states` where `name`\
      LIKE BINARY 'N%' ORDER BY `id` ASC")
     states = cursor.fetchall()
     for state in states:
