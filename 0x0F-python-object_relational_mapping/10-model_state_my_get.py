@@ -23,7 +23,7 @@ if __name__ == "__main__":
         .filter(State.name == sys.argv[4])\
         .order_by(State.id)\
         .first()
-    if state is not None:
+    if state is not None and sys.argv[4] == state.name:
         print("{}".format(state.id))
     else:
         print("Nothing")
