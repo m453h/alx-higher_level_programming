@@ -18,7 +18,7 @@ if __name__ == "__main__":
     response = requests.post(url, data={"q": q})
     try:
         response = response.json()
-        if response == {}:
+        if response:
             print("[{}] {}".format(response.get("id"), response.get("name")))
         else:
             print("No result")
