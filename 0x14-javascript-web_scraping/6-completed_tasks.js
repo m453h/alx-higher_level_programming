@@ -12,14 +12,16 @@ request(url, function (error, response) {
         const todos = JSON.parse(response.body);
         const data = {};
 
-        for (const todo of todos) {
-          const userId = todo.userId.toString();
-          const status = todo.completed;
-          if (status) {
-            if (!(userId in data)) {
-              data[todo.userId.toString()] = 1;
-            } else {
-              data[userId] = data[userId] + 1;
+        if (typeof todos[Symbol.iterator] === 'function') {
+          for (const todo of todos) {
+            const userId = todo.userId.toString();
+            const status = todo.completed;
+            if (status) {
+              if (!(userId in data)) {
+                data[todo.userId.toString()] = 1;
+              } else {
+                data[userId] = data[userId] + 1;
+              }
             }
           }
         }
