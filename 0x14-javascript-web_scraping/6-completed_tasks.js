@@ -24,5 +24,20 @@ request.get(url, { json: true }, (error, response, body) => {
       }
     }
   });
-  console.log(data);
+  let index = 0;
+  const length = Object.keys(data).length;
+  for (const key in data) {
+    if (index === 0) {
+      if (length !== 1) {
+        console.log('{ \'' + key + '\': ' + data[key] + ',');
+      } else {
+        console.log('{ \'' + key + '\': ' + data[key] + ' }');
+      }
+    } else if (index === length - 1) {
+      console.log('  \'' + key + '\': ' + data[key] + ' }');
+    } else {
+      console.log(`  '${key}': ${data[key]},`);
+    }
+    index++;
+  }
 });
