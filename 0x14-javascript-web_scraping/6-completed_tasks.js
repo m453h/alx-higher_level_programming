@@ -17,7 +17,7 @@ request.get(url, { json: true }, (error, response, body) => {
   const data = {};
   body.forEach((todo) => {
     if (todo.completed) {
-      if (data[todo.userId] === undefined) {
+      if (!data[todo.userId]) {
         data[todo.userId] = 1;
       } else {
         data[todo.userId]++;
