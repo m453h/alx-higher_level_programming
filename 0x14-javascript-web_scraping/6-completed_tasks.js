@@ -8,9 +8,9 @@ request(url, function (error, response) {
     console.log(error);
   } else {
     if (response.statusCode === 200) {
+      const data = {};
       try {
         const todos = JSON.parse(response.body);
-        const data = {};
 
         if (typeof todos[Symbol.iterator] === 'function') {
           for (const todo of todos) {
@@ -25,11 +25,11 @@ request(url, function (error, response) {
             }
           }
         }
-
-        console.log(data);
       } catch (parseError) {
         console.error(parseError);
       }
+
+      console.log(data);
     } else {
       console.log(response.statusCode);
     }
