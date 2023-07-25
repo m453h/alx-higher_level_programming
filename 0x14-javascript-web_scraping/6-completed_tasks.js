@@ -27,7 +27,8 @@ request.get(url, { json: true }, (error, response, body) => {
   let index = 0;
   const length = Object.keys(data).length;
   if (length === 0) {
-    console.log('{}')
+    console.log('{}');
+    return;
   }
   for (const key in data) {
     if (index === 0) {
