@@ -15,13 +15,10 @@ request(url, function (error, response) {
         for (const todo of todos) {
           const userId = todo.userId.toString();
           const status = todo.completed;
-
-          if (!(userId in data)) {
-            if (status) {
+          if (status) {
+            if (!(userId in data)) {
               data[todo.userId.toString()] = 1;
-            }
-          } else {
-            if (status) {
+            } else {
               data[userId] = data[userId] + 1;
             }
           }
