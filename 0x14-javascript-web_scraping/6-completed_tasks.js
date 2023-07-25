@@ -8,19 +8,15 @@ request(url, function (error, response, body) {
     console.log(error);
   } else {
     if (response.statusCode === 200) {
-      try {
         const todos = JSON.parse(body);
         const data = {};
         for (const todo of todos) {
-          if (todo.completed) {
+          if (todo.completed == true) {
             const userId = todo.userId.toString();
             data[userId] = (data[userId] || 0) + 1;
           }
         }
         console.log(data);
-      } catch (parseError) {
-        console.error(parseError);
-      }
     }
   }
 });
