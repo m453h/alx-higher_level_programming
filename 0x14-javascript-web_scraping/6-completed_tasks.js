@@ -14,11 +14,11 @@ request(url, function (error, response) {
 
         if (typeof todos[Symbol.iterator] === 'function') {
           for (const todo of todos) {
-            const userId = todo.userId.toString();
+            const userId = todo.userId;
             const status = todo.completed;
             if (status) {
               if (!(userId in data)) {
-                data[todo.userId.toString()] = 1;
+                data[userId] = 1;
               } else {
                 data[userId] = data[userId] + 1;
               }
