@@ -9,17 +9,28 @@ request(url, function (error, response) {
   } else {
     if (response.statusCode === 200) {
       const data = {};
-      const todos = JSON.parse(response.body);
+      try {
+        const todos = JSON.parse(response.body);
 
-      for (const i in todos) {
-        const todo = todos[i];
-        if (todo.completed === true) {
-          if (data[todo.userId] === undefined) {
-            data[todo.userId] = 1;
-          } else {
-            data[todo.userId]++;
+        if (typeof todos[Symbol.iterator] === 'function') {
+          for (const todo of todos) {
+            const userId = todo.userId;
+            const status = todo.completed;
+            if (status) {
+              if (!(userId in data)) {
+                data[userId] = 1;
+              } else {
+                data[userId] = data[userId] + 1;
+              }
+            }
+          }
+        } else {
+          if (todos.completed) {
+            data[todos.userId] = 1;
           }
         }
+      } catch (parseError) {
+        console.error(parseError);
       }
 
       console.log(data);
