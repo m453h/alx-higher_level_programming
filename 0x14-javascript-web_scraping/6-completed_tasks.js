@@ -17,7 +17,9 @@ request(url, function (error, response) {
           const status = todo.completed;
 
           if (!(userId in data)) {
-            data[todo.userId.toString()] = 1;
+            if (status) {
+              data[todo.userId.toString()] = 1;
+            }
           } else {
             if (status) {
               data[userId] = data[userId] + 1;
