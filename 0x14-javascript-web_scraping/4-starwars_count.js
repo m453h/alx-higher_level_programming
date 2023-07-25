@@ -14,15 +14,16 @@ request(url, function (error, response) {
         const movies = JSON.parse(response.body);
         for (const movie of movies.results) {
           for (const character of movie.characters) {
-            if (character.includes(18)) {
+            if (character.includes('18')) {
               counter = counter + 1;
             }
           }
         }
-        console.log(counter);
       } catch (parseError) {
         console.error(parseError);
       }
+
+      console.log(counter);
     } else {
       console.log(response.statusCode);
     }
