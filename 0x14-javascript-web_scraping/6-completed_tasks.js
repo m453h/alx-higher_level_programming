@@ -32,14 +32,26 @@ request.get(url, { json: true }, (error, response, body) => {
   for (const key in data) {
     if (index === 0) {
       if (length !== 1) {
-        console.log('{ \'' + key + '\': ' + data[key] + ',');
+        if (length === 2) {
+          process.stdout.write('{ \'' + key + '\': ' + data[key] + ',');
+        } else {
+          console.log('{ \'' + key + '\': ' + data[key] + ',');
+        }
       } else {
         console.log('{ \'' + key + '\': ' + data[key] + ' }');
       }
     } else if (index === length - 1) {
-      console.log('  \'' + key + '\': ' + data[key] + ' }');
+      if (length === 2) {
+        process.stdout.write(' \'' + key + '\': ' + data[key] + ' }');
+      } else {
+        console.log('  \'' + key + '\': ' + data[key] + ' }');
+      }
     } else {
-      console.log(`  '${key}': ${data[key]},`);
+      if (length === 2) {
+        process.stdout.write(`  '${key}': ${data[key]},`);
+      } else {
+        console.log(`  '${key}': ${data[key]},`);
+      }
     }
     index++;
   }
