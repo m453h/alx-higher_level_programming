@@ -11,7 +11,7 @@ $('document').ready(function () {
     getTranslation();
   });
 
-  $('#language_code').keypress(function (event) {
+  $('INPUT#language_code').keypress(function (event) {
     if (event.which === 13) {
       getTranslation();
     }
